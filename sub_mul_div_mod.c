@@ -30,7 +30,7 @@ void sub(stack_t **stack, unsigned int line_number)
 void mul(stack_t **stack, unsigned int line_number)
 {
 	size_t stack_len = stack_length(*stack);
-	int total;
+	int result;
 
 	if (stack_len < 2 || !stack || !*stack)
 	{
@@ -38,8 +38,8 @@ void mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	total = ((*stack)->n * (*stack)->next->n);
-	(*stack)->next->n = total;
+	result = ((*stack)->n * (*stack)->next->n);
+	(*stack)->next->n = result;
 	pop(stack, line_number);
 }
 
@@ -52,7 +52,7 @@ void mul(stack_t **stack, unsigned int line_number)
 void division(stack_t **stack, unsigned int line_number)
 {
 	size_t stack_len = stack_length(*stack);
-	int total;
+	int result, first, second;
 
 	if (stack_len < 2 || !stack || !*stack)
 	{
@@ -66,8 +66,16 @@ void division(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	total = ((*stack)->n + (*stack)->next->n);
-	(*stack)->next->n = total;
+	/* Deal with negative values in the stack */
+	first = (*stack)->n, second = (*stack)->next->n;
+
+	if (first < 0 || second < 0)
+		result = (-1) * (abs(second) / abs(first));
+	else
+		result = (second / first);
+
+	(*stack)->next->n = result;
+
 	pop(stack, line_number);
 }
 
@@ -80,21 +88,30 @@ void division(stack_t **stack, unsigned int line_number)
 void mod(stack_t **stack, unsigned int line_number)
 {
 	size_t stack_len = stack_length(*stack);
-	int total;
+	int rem, first, second;
 
+	/* If number of stacks is less than 2, print error to stderr */
 	if (stack_len < 2 || !stack || !*stack)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
+	/* If top stack has n = 0, print error to stderr */
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	total = ((*stack)->next->n % (*stack)->n);
-	(*stack)->next->n = total;
+	first = (*stack)->n, second = (*stack)->next->n;
+
+	/* Deal with cases where n in one or both stacks is negative */
+	if (first < 0 || second < 0)
+		rem = (-1) * (abs(second) % abs(first));
+	else
+		rem = (second % first);
+
+	(*stack)->next->n = rem;
 	pop(stack, line_number);
 }
