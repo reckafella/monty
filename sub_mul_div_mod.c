@@ -135,5 +135,5 @@ void pchar(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		exit(EXIT_FAILURE);
 	}
 
-	fprintf(stdout, "%c\n", (*stack)->n);
+	printf("%c\n", (*stack)->n);
 }
