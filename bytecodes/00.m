@@ -13,4 +13,3 @@ push 104
 push 99
 push 83 
 pstr
-pchar
