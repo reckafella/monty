@@ -6,5 +6,5 @@ push 111
 push 111
 push 104
 push 99
-push 83
+push 83 # man
 pstr
