@@ -123,18 +123,20 @@ void mod(stack_t **stack, unsigned int line_number)
  */
 void pchar(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-	if ((*stack)->n < 1 || (*stack)->n > 127)
-	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else if (!stack || !(*stack))
+	if (!stack || !(*stack))
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	if ((((*stack)->n >= 0) && ((*stack)->n <= 127)))
+	{
+		putchar((*stack)->n);
+		putchar(10);
+	}
 	else
 	{
-		printf("%c\n", (*stack)->n);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 }

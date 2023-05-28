@@ -49,10 +49,10 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *ptr = *stack;
 
-	while (ptr != NULL && !(ptr->n <= 0 || ptr->n > 127))
+	while (ptr != NULL && (ptr->n > 0 && ptr->n <= 127))
 	{
-		printf("%c", ptr->n);
+		putchar(ptr->n);
 		ptr = ptr->next;
 	}
-	printf("\n");
+	putchar(10);
 }
