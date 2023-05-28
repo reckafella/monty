@@ -24,8 +24,18 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-	print_stack(*stack);
+	stack_t *ptr = *stack;
+
+	if (ptr == NULL)
+		return;
+
+	while (ptr != NULL)
+	{
+		printf( "%d\n", ptr->n);
+		ptr = ptr->next;
+	}
 }
+
 /**
  * pint - print top most element in a stack
  * @stack: stack

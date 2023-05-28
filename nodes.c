@@ -36,19 +36,23 @@ stack_t *add_node_end(stack_t **stack, const int n)
  *
  * Return: number of nodes
 */
-size_t print_stack(stack_t *stack)
+/* size_t print_stack(stack_t *stack)
 {
 	size_t count = 0;
+	stack_t *ptr = stack;
 
-	while (stack != NULL)
+	if (ptr == NULL)
+		return;
+
+	while (ptr != NULL)
 	{
-		printf( "%d\n", stack->n);
-		stack = stack->next;
+		printf( "%d\n", ptr->n);
+		ptr = ptr->next;
 		count++;
 	}
 
 	return (count);
-}
+} */
 
 /**
  * free_stack - free stack

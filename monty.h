@@ -62,7 +62,7 @@ typedef struct instruction_s
 /* function prototypes */
 /* Stacks */
 stack_t *add_node_end(stack_t **stack, const int n);
-size_t print_stack(stack_t *stack);
+/* size_t print_stack(stack_t *stack); */
 void free_stack(stack_t *stack);
 
 /* basic_list_operations.c */
