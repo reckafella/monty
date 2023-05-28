@@ -56,7 +56,7 @@ void division(stack_t **stack, unsigned int line_number)
 
 	if (stack_len < 2 || !stack || !*stack)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -114,4 +114,26 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	(*stack)->next->n = rem;
 	pop(stack, line_number);
+}
+
+/**
+ * pchar - print top most element in a stack as a character
+ * @stack: stack
+ * @line_number: line number where command is located
+ */
+void pchar(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->n <= 0 || (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	fprintf(stdout, "%c\n", (*stack)->n);
 }

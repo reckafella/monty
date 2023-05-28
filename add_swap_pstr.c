@@ -39,3 +39,24 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = temp;
 }
+
+/**
+ * pstr - print all elements starting with the top most
+ * @stack: stack
+ * @line_number: line number where command is located
+ */
+void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *ptr = *stack;
+
+	if (!(*stack) || !stack)
+	{
+		fprintf(stdout, "\n");
+	}
+	while (ptr != NULL && (ptr->n > 0 && ptr->n <= 127))
+	{
+		fprintf(stdout, "%c", ptr->n);
+		ptr = ptr->next;
+	}
+	fprintf(stdout, "\n");
+}
