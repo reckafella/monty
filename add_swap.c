@@ -19,7 +19,6 @@ void add(stack_t **stack, unsigned int line_number)
 	total = ((*stack)->n + (*stack)->next->n);
 	(*stack)->next->n = total;
 	pop(stack, line_number);
-	/* (*stack)->n = total; */
 }
 /**
  * swap - function add the last two integer elements in the stack

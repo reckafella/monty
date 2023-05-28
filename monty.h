@@ -23,6 +23,10 @@
         {"nop", nop},    \
         {"add", add},    \
         {"swap", swap},    \
+        {"sub", sub},    \
+        {"div", division},    \
+        {"mod", mod},    \
+        {"mul", mul},    \
         {NULL, NULL}    \
 };
 #endif
@@ -87,6 +91,12 @@ int is_numeric(const char *str);
 /* add_swap.c */
 void add(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+
+/* sub_mul_div_mod.c */
+void sub(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void division(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 
 /* Obtain user input */
 /* extern ssize_t get_delim(char **lineptr, size_t *n, int delim, FILE *stream);
