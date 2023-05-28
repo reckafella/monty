@@ -21,6 +21,8 @@
         {"pint", pint},    \
         {"pop", pop},    \
         {"nop", nop},    \
+        {"add", add},    \
+        {"swap", swap},    \
         {NULL, NULL}    \
 };
 #endif
@@ -60,10 +62,12 @@ typedef struct instruction_s
 } instruction_t;
 
 /* function prototypes */
-/* Stacks */
+
+/* nodes.c */
 stack_t *add_node_end(stack_t **stack, const int n);
-/* size_t print_stack(stack_t *stack); */
+size_t print_stack(stack_t *stack);
 void free_stack(stack_t *stack);
+size_t stack_length(stack_t *stack);
 
 /* basic_list_operations.c */
 void push(stack_t **stack, unsigned int line_number);
@@ -79,6 +83,10 @@ char *allocate_memory(char *filename);
 void usage_error(void);
 void file_io_error(char *filename);
 int is_numeric(const char *str);
+
+/* add_swap.c */
+void add(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 /* Obtain user input */
 /* extern ssize_t get_delim(char **lineptr, size_t *n, int delim, FILE *stream);

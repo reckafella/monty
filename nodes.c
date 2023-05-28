@@ -36,13 +36,10 @@ stack_t *add_node_end(stack_t **stack, const int n)
  *
  * Return: number of nodes
 */
-/* size_t print_stack(stack_t *stack)
+size_t print_stack(stack_t *stack)
 {
 	size_t count = 0;
 	stack_t *ptr = stack;
-
-	if (ptr == NULL)
-		return;
 
 	while (ptr != NULL)
 	{
@@ -52,7 +49,7 @@ stack_t *add_node_end(stack_t **stack, const int n)
 	}
 
 	return (count);
-} */
+}
 
 /**
  * free_stack - free stack
@@ -69,4 +66,24 @@ void free_stack(stack_t *stack)
 		free(ptr);
 	}
 	stack = NULL;
+}
+
+/**
+ * stack_length - function returns the length of the stack
+ * @stack: pointer to first node
+ *
+ * Return: number of stacks
+*/
+size_t stack_length(stack_t *stack)
+{
+	size_t count = 0;
+	stack_t *ptr = stack;
+
+	while (ptr != NULL)
+	{
+		ptr = ptr->next;
+		count++;
+	}
+
+	return (count);
 }

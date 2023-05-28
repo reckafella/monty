@@ -24,16 +24,7 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-	stack_t *ptr = *stack;
-
-	if (ptr == NULL)
-		return;
-
-	while (ptr != NULL)
-	{
-		printf( "%d\n", ptr->n);
-		ptr = ptr->next;
-	}
+	print_stack(*stack);
 }
 
 /**
