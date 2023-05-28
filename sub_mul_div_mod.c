@@ -129,14 +129,11 @@ void pchar(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		exit(EXIT_FAILURE);
 	}
 
-	if ((((*stack)->n >= 0) && ((*stack)->n <= 127)))
-	{
-		putchar((*stack)->n);
-		putchar(10);
-	}
-	else
+	if (((*stack)->n < 0) || ((*stack)->n > 127))
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	putchar((*stack)->n);
+	putchar(10);
 }

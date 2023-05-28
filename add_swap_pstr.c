@@ -49,9 +49,12 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *ptr = *stack;
 
-	while (ptr != NULL && (ptr->n > 0 && ptr->n <= 127))
+	while (ptr != NULL)
 	{
-		putchar(ptr->n);
+		if ((ptr->n > 0 && ptr->n <= 127))
+			putchar(ptr->n);
+		else
+			break;
 		ptr = ptr->next;
 	}
 	putchar(10);
