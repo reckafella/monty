@@ -43,7 +43,7 @@ size_t print_stack(stack_t *stack)
 
 	while (ptr != NULL)
 	{
-		printf( "%d\n", ptr->n);
+		printf("%d\n", ptr->n);
 		ptr = ptr->next;
 		count++;
 	}

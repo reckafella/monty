@@ -72,8 +72,8 @@ void division(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mod - function computes the rest of the division of the second top element of the stack
- * by the top element of the stack.
+ * mod - function computes the rest of the division of the
+ * second top element of the stack by the top element of the stack.
  * @stack: stack
  * @line_number: line number where command is located
  */
