@@ -14,7 +14,8 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	add_node_end(stack, atoi(push_arg));
+	if (!add_node_end(stack, atoi(push_arg)))
+		exit(EXIT_FAILURE);
 }
 /**
  * pall - print all elements starting with the top most
@@ -37,10 +38,7 @@ void pint(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	/* while (ptr != NULL)
-		ptr = ptr->next;
 
-	ptr = ptr->prev; */
 	printf("%d\n", (*stack)->n);
 }
 /**
@@ -75,6 +73,6 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	(void) stack;
+	(void) line_number;
 }
